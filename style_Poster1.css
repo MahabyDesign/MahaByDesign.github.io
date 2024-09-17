@@ -1,0 +1,90 @@
+article {
+    width: 1000px;
+    height: 1300px;
+    margin: 0 auto;
+    background-color: rgb(235, 233, 233);
+    padding: 100px;
+}
+
+h1 {
+    margin-top: -25px;
+    font-size: 150px;
+    font-family: Helvetica, sans-serif;
+    color: #00BFFF;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: 20px; /* Adjust the space between letters */
+}
+
+h2 {
+    margin-top: 15px;
+    font-size: 50px;
+    font-family: Helvetica, sans-serif;
+    color: orange;
+    text-align: center;
+    letter-spacing: 10px; /* Adjust the space between letters */
+}
+
+/* Container for images */
+.image-container {
+    position: relative; /* Relative positioning to allow absolute positioning of second image */
+    text-align: left;
+}
+
+/* Style for the first image */
+.first-image {
+    position: absolute; /* Position relative to the container */
+    top: 0; /* Aligns with the top */
+    left: 50px; /* Adjust as needed for alignment */
+    width: 90px;  
+    height: 120px;
+}
+
+/* Style for the second image */
+.second-image {
+    position: absolute; /* Positioned under other images */
+    top: 80px; /* Use a pixel value to lower the image */
+    left: 235px; 
+    width: 576px;  
+    height: 720px;
+    z-index: 1; 
+}
+
+/* Style for the third image */
+.third-image {
+    position: absolute; /* Position relative to the container */
+    top: 0; /* Aligns with the top */
+    left: 500px; /* Adjust for overlap */
+    width: 90px;  
+    height: 120px;
+    z-index: 2; /* Ensure it overlaps image 2 */
+}
+
+/* Style for the fourth image */
+.fourth-image {
+    position: absolute; /* Position relative to the container */
+    top: 0; /* Aligns with the top */
+    left: 900px; /* Adjust for overlap */
+    width: 90px;  
+    height: 120px;
+    z-index: 2; /* Ensure it overlaps image 2 */
+}
+
+.details {
+    display: flex;
+    font-family: monospace;
+    font-size: 8px;
+    color: #00BFFF;
+    margin-top: 900px; /* Adjust this to lower the text on the page */
+    gap: 40px; /* Add space between the h6 elements */ 
+    text-align: center;
+}
+
+h6 {
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: black;
+    letter-spacing: 5px; /* Adjust the space between letters */
+    margin: auto;
+}

@@ -1,0 +1,47 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00BFFF;
+    font-size: 100px;
+    position: absolute;
+}
+
+.M {
+    left: 300px;
+    top: 50px;
+}
+
+.U {
+    left: 300px;
+    top: 150px;
+}
+
+.B {
+    left: 300px;
+    top: 250px;
+}
+
+.A {
+    left: 300px;
+    top: 350px;
+}
+
+.D {
+    left: 300px;
+    top: 450px;
+}
+
+.A2 {
+    left: 300px;
+    top: 550px;
+}
+
+.L {
+    left: 300px;
+    top: 650px;
+}
+
+.A3 {
+    left: 300px;
+    top: 750px;
+}
+
