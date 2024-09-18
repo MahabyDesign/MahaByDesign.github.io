@@ -1,47 +1,74 @@
+
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #00BFFF;
-    font-size: 100px;
+    margin: 30;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    padding: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.text-content {
+    flex: 1;
     position: absolute;
+    top: 30%; /* Adjust this value to move the text down */
+    left: 10%;
+    z-index: 1; /* Keeps text above the image */
 }
 
-.M {
-    left: 300px;
-    top: 50px;
+.title {
+    font-size: 7rem; /* Increased by 100% */
+    font-weight: 700;
+    line-height:1.2;
+    margin-bottom: -20px;
+    color: #36afd4; /* Make sure text color stands out */
 }
 
-.U {
-    left: 300px;
-    top: 150px;
+.ADO {
+    font-size: 3rem; /* Increased by 100% */
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #060606; /* Ensure visibility */
 }
 
-.B {
-    left: 300px;
-    top: 250px;
+.description {
+    font-size: 0.9rem; /* Keep this smaller */
+    line-height: 1.6;
+    color: #ee8208;
 }
 
-.A {
-    left: 300px;
-    top: 350px;
+.image-content {
+    flex: 1;
+    text-align: right;
+    margin-top: 500px;
+    position: relative;
 }
 
-.D {
-    left: 300px;
-    top: 450px;
+.main-image {
+    max-width: 60%; /* Adjust as needed */
+    height: auto;
+    object-fit: contain; /* Ensures the full image is shown */
+    opacity: 0.85; /* Slight transparency to allow text to be visible */
 }
 
-.A2 {
-    left: 300px;
-    top: 550px;
+.image-details {
+    margin-top: 20px;
+    font-size: 1.3rem;
 }
-
-.L {
-    left: 300px;
-    top: 650px;
-}
-
-.A3 {
-    left: 300px;
-    top: 750px;
-}
-
