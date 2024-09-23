@@ -1,0 +1,223 @@
+article {
+    width: 450px; 
+    height: 750px; 
+    margin: auto;
+    background-color: rgb(233, 104, 35);
+    padding: 65px; 
+}
+
+h1 {
+    margin-top: -18.75px; 
+    font-size: 60px;
+    font-family: Helvetica, sans-serif;
+    color: #00BFFF;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: 10px;
+}
+
+h2 {
+    margin-top: 12px; 
+    font-size: 37.5px; 
+    font-family: Helvetica, sans-serif;
+    color: rgb(155, 197, 0) !important;
+    text-align: right;
+    letter-spacing: 3px;
+    position: relative; 
+    z-index: 10;
+}
+
+h5 {
+    color: rgb(155, 197, 0) !important;
+}
+
+
+h1 {
+    margin-top: -18.75px; 
+    font-size: 60px;
+    font-family: Helvetica, sans-serif;
+    color: #00BFFF;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: 15px;
+    z-index: 10
+}
+
+
+h2 {
+    margin-top: 11.25px; 
+    font-size: 37.5px; 
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    letter-spacing: 2px; 
+}
+
+h2 {
+    animation: blink 1s infinite;
+    display: inline-block;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* Fully visible */
+    }
+    50% {
+        opacity: 0; /* Fully invisible */
+    }
+}
+
+/* Container for images */
+.image-container {
+    position: relative; 
+    text-align: left;
+}
+
+/* Style for the second image */
+.second-image {
+    position: absolute;
+    top: 30px; 
+    left: 10px; 
+    width: 432px;   
+    height: 540px;
+    z-index: 1;
+}
+
+.details {
+    display: flex;
+    font-family: monospace;
+    font-size: 6px; 
+    color: #00BFFF;
+    margin-top: 650px; /* 75% of original margin */
+    gap: 30px; /* 75% of original gap */
+    text-align: center;
+}
+
+h6 {
+    text-align: center;
+    font-size: 15px; /* 75% of original font size */
+    font-family: Helvetica, sans-serif;
+    color: black;
+    letter-spacing: 3.75px; /* 75% of original letter spacing */
+    margin: auto;
+}
+
+.description {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3px;
+    color: rgb(101, 208, 243);
+}
+
+h5 p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Container for images */
+.image-container {
+    position: relative; 
+    text-align: left;
+}
+
+/* Style for the second image */
+.second-image {
+    position: absolute;
+    top: -50px; 
+    left: 10px; 
+    width: 432px;   
+    height: 540px;
+    z-index: 1;
+}
+
+.details {
+    display: flex;
+    font-family: monospace;
+    font-size: 6px; 
+    color: #00BFFF;
+    margin-top: 550px; /* 75% of original margin */
+    gap: 30px; /* 75% of original gap */
+    text-align: center;
+}
+
+h6 {
+    text-align: center;
+    font-size: 15px; /* 75% of original font size */
+    font-family: Helvetica, sans-serif;
+    color: black;
+    letter-spacing: 3.75px; /* 75% of original letter spacing */
+    margin: auto;
+}
+
+.description {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3px;
+    color: rgb(101, 208, 243);
+}
+
+h5 p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.flier > * {
+/* Adjust animation duration to change the element’s speed */
+        animation: fly 50s linear infinite;
+        pointer-events: none !important;
+	top: 0;
+	left: 0;
+	transform: translateX(-120%) translateY(-120%) rotateZ(0) scale(0.75); /* Scale image down by 75% */
+	position: fixed;
+	animation-delay: 0.05s;
+	z-index: 999999;
+}
+
+.flier > * {
+    animation: fly 50s linear infinite;
+    pointer-events: none !important;
+    top: 0;
+    left: 0;
+    transform: translateX(-120%) translateY(-120%) rotateZ(0); /* Remove scale here */
+    max-width: 80%;  /* Reduce the size by 80% proportionally */
+    max-height: 80%; /* Reduce the size by 80% proportionally */
+    position: fixed;
+    animation-delay: 1s;
+    z-index: 999999;
+}
+
+ /* Keyframe values control where the element will begin
+    and end its trajectory across the screen. Each rule
+    represents a path the element follows across the screen. */
+
+
+@keyframes fly {
+
+	98.001%, 0% {
+                display: block;
+		transform: translateX(-200%) translateY(100vh) rotateZ(0deg)
+	}
+
+	15% {
+		transform: translateX(100vw) translateY(-100%) rotateZ(180deg)
+	}
+
+	15.001%, 18% {
+		transform: translateX(100vw) translateY(-30%) rotateZ(0deg)
+	}
+
+	40% {
+		transform: translateX(-200%) translateY(3vh) rotateZ(-180deg)
+	}
+
+	40.001%, 43% {
+		transform: translateX(-200%) translateY(-100%) rotateZ(-180deg)
+	}
+
+	65% {
+		transform: translateX(100vw) translateY(50vh) rotateZ(0deg)
+	}
+
+	65.001%, 68% {
+		transform: translateX(20vw) translateY(-200%) rotateZ(180deg)
+	}
+
+	95% {
+		transform: translateX(10vw) translateY(100vh) rotateZ(0deg)
+	}
+}
