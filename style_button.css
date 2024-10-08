@@ -1,8 +1,0 @@
-/* In style_button.css */
-#button-container .button {
-    background-color: blue !important;
-    color: white !important;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 5px; /* Optional */
-}

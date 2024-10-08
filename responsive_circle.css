@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.circle {
+    width: 400px;
+    height: 400px;
+    background-color: #001f3f;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .circle {
+        width: 350px;
+        height: 350px;
+        background-color: #003f7f;
+    }
+}
+
+@media (max-width: 1100px) {
+    .circle {
+        width: 320px;
+        height: 320px;
+        background-color: #005fbf;
+    }
+}
+
+@media (max-width: 1000px) {
+    .circle {
+        width: 290px;
+        height: 290px;
+        background-color: #007fff;
+    }
+}
+
+@media (max-width: 900px) {
+    .circle {
+        width: 260px;
+        height: 260px;
+        background-color: #339fff;
+    }
+}
+
+@media (max-width: 800px) {
+    .circle {
+        width: 230px;
+        height: 230px;
+        background-color: #66bfff;
+    }
+}
+
+@media (max-width: 700px) {
+    .circle {
+        width: 200px;
+        height: 200px;
+        background-color: #99dfff;
+    }
+}
+
+@media (max-width: 600px) {
+    .circle {
+        width: 170px;
+        height: 170px;
+        background-color: #b3e6ff;
+    }
+}
+
+@media (max-width: 500px) {
+    .circle {
+        width: 140px;
+        height: 140px;
+        background-color: #cceeff;
+    }
+}
+
+@media (max-width: 400px) {
+    .circle {
+        width: 110px;
+        height: 110px;
+        background-color: #e6f5ff;
+    }
+}
+
+@media (max-width: 300px) {
+    .circle {
+        width: 80px;
+        height: 80px;
+        background-color: #f2fbff;
+    }
+}
