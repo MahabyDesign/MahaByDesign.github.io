@@ -22,20 +22,21 @@ body {
     font-family: sans-serif;
 }
 
-/* Prevent visited links from turning purple */
-a {
-    color: teal; /* Set your desired link color */
-    text-decoration: none; /* Optional, removes underline */
-}
-
-a:visited {
-    color: teal; /* Same color as unvisited to prevent purple */
+/* Hyperlink styling */
+a, a:visited {
+    color: teal; /* Start with teal (matching the body color) */
+    text-decoration: none; /* Optional: removes underline */
 }
 
 /* Media query for screens larger than 1024px */
 @media (max-width: 1024px) {
     body {
         font-size: 13px;
+        color: turquoise;
+    }
+
+    /* Change link color to match text at this size */
+    a, a:visited {
         color: turquoise;
     }
 }
@@ -46,12 +47,22 @@ a:visited {
         font-size: 12px;
         color: turquoise;
     }
+
+    /* Change link color to match text at this size */
+    a, a:visited {
+        color: turquoise;
+    }
 }
 
 /* Media query for screens larger than 480px */
 @media (max-width: 480px) {
     body {
         font-size: 11px;
+        color: turquoise;
+    }
+
+    /* Change link color to match text at this size */
+    a, a:visited {
         color: turquoise;
     }
 }
@@ -62,12 +73,22 @@ a:visited {
         font-size: 10px;
         color: turquoise;
     }
+
+    /* Change link color to match text at this size */
+    a, a:visited {
+        color: turquoise;
+    }
 }
 
-/* Media query for screens larger than 1024px (changing color to pink) */
+/* Media query for changing font color to pink */
 @media (max-width: 1024px) and (max-width: 768px) {
     body {
         font-size: 12px;
-        color: rgb(212, 244, 255);
+        color: pink;
+    }
+
+    /* Match link color to pink text */
+    a, a:visited {
+        color: pink;
     }
 }
