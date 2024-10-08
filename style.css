@@ -1,4 +1,4 @@
-/* Apply font to the whole body */
+
 body {
     background-color: black;
     font-family: sans-serif;
@@ -12,12 +12,10 @@ body {
     font-style: normal;
 }
 
-/* Center text */
 .center {
     text-align: center;
 }
 
-/* Monospace font for specific elements */
 .mono {
     font-family: sans-serif;
 }
@@ -25,7 +23,7 @@ body {
 /* Hyperlink styling */
 a, a:visited {
     color: teal; /* Start with teal (matching the body color) */
-    text-decoration: none; /* Optional: removes underline */
+    text-decoration: none; /* remove underline */
 }
 
 /* Media query for screens larger than 1024px */
