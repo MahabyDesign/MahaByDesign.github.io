@@ -1,0 +1,24 @@
+body {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    background-color: #000000;
+    /*  1em = font size declared in body, aka 36px  */
+    margin: 0.5em;
+  }
+  
+  .container {
+    display: grid;
+    /*  repeat creates 12 columns or rows at 1fr each  */
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100vh;
+    gap: 0.5em;
+  }
+  
+  .container div {
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
