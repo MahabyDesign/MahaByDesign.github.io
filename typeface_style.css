@@ -13,12 +13,96 @@ body {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
     height: 100vh;
-    gap: 0.5em;
+    gap: 0em;
   }
   
   .container div {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0px;
     text-align: center;
   }
+  .one {
+    grid-row-start: 2;
+    grid-row-end: 8;
+  }
   
+  .two {
+    grid-column-start: 2;
+    
+  }
+  .three {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+  .four {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 8;
+  }
+
+  .five {
+    grid-column-start: 5;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 8;
+  }
+
+  .six {
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .seven {
+    grid-column-start: 7;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+
+  .eight {
+    grid-column-start: 6;
+    grid-column-end: 6;
+    grid-row-start: 4;
+    grid-row-end: 4;
+
+  }
+
+  .nine {
+    grid-column-start: 7;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end: 5;
+  }
+
+  .ten {
+    grid-column-start: 7;
+    grid-column-end: 7;
+    grid-row-start: 6;
+    grid-row-end: 6;
+  }
+
+  .eleven {
+    grid-column-start: 7;
+    grid-column-end: 7;
+    grid-row-start: 7;
+    grid-row-end: 7;
+  }
+
+  .twelve {
+    grid-column-start: 10;
+    grid-column-end: 10;
+    grid-row-start: 1;
+    grid-row-end: 8;
+  }
+
+  .thirteen {
+    grid-column-start: 9;
+    grid-column-end: 12;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
