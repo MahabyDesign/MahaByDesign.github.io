@@ -3,7 +3,7 @@ body {
     background-color: black;
     font-family: sans-serif;
     font-size: 14px;
-    color: white;
+    color: teal;
     letter-spacing: -1px;
     max-width: 650px;
     margin: 0 auto;
@@ -20,4 +20,54 @@ body {
 /* Monospace font for specific elements */
 .mono {
     font-family: sans-serif;
+}
+
+/* Prevent visited links from turning purple */
+a {
+    color: teal; /* Set your desired link color */
+    text-decoration: none; /* Optional, removes underline */
+}
+
+a:visited {
+    color: teal; /* Same color as unvisited to prevent purple */
+}
+
+/* Media query for screens larger than 1024px */
+@media (max-width: 1024px) {
+    body {
+        font-size: 13px;
+        color: turquoise;
+    }
+}
+
+/* Media query for screens larger than 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px;
+        color: turquoise;
+    }
+}
+
+/* Media query for screens larger than 480px */
+@media (max-width: 480px) {
+    body {
+        font-size: 11px;
+        color: turquoise;
+    }
+}
+
+/* Media query for very small screens */
+@media (max-width: 320px) {
+    body {
+        font-size: 10px;
+        color: turquoise;
+    }
+}
+
+/* Media query for screens larger than 1024px (changing color to pink) */
+@media (max-width: 1024px) and (max-width: 768px) {
+    body {
+        font-size: 12px;
+        color: rgb(212, 244, 255);
+    }
 }
