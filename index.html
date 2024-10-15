@@ -37,12 +37,21 @@
     <h2 class="mono">Projects</h2>
     <ul class="mono">
         <li><a href="pg1.html" target="_blank">TEN PAGES</a></li>
-        <li><a href="Poster_Series_1.html" target="_blank">Poster 1</a></li>
-        <li><a href="Poster_Series_2.html" target="_blank">Poster 2</a></li>
-        <li><a href="Poster_Series_3.html" target="_blank">Poster 3</a></li>
         <li><a href="responsive_circle.html" target="_blank">Responsive Circle </a></li>
         <li><a href="typeface.html" target="_blank">Typeface </a></li>
         <li><a href="1-intro-to-js-starter.htm" target="_blank">Javascript Work</a></li>
     </ul>
+   <!-- Cursor effects library -->
+   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+
+   <!-- Mouse effect initialization -->
+   <script>
+       window.addEventListener("load", (event) => {
+           new cursoreffects.fairyDustCursor({
+               colors: ["#ff0000", "#00ff00", "#0000ff"],
+           });
+       });
+   </script>
+
 </body>
 </html>
