@@ -47,6 +47,7 @@
             margin-top: -50px;
             background-position: center;
             background-repeat: no-repeat;
+            background-size: contain; /* Ensures the image fits the section */
         }
     </style>
 </head>
@@ -64,7 +65,7 @@
         <br>
     </div>
     <script>
-        const pics = ['url("images/Gen_Logo/logo1.png")', 'url("images/Gen_Logo/logo2.png ")', 'url("images/Gen_Logo/logo3.png ")'];
+        const pics = ['url("images/Gen_Logo/logo_1.png")', 'url("images/Gen_Logo/logo_2.png ")', 'url("images/Gen_Logo/logo_3.png ")'];
         const pic = document.querySelector('section');
 
         function showImage() {
