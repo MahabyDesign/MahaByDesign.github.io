@@ -101,4 +101,21 @@
         const toggleButton = document.getElementById("toggleButton");
 
         function showImage() {
-            var a = Ma
+            var a = Math.floor(Math.random() * pics.length);
+            var img = pics[a];
+            pic.style.backgroundImage = img;
+        }
+
+        setInterval(showImage, 1000);
+
+        // Toggle background color and button appearance
+        let isOn = false;
+        toggleButton.addEventListener("click", function () {
+            isOn = !isOn;
+            document.body.style.backgroundColor = isOn ? "orange" : "midnightblue";
+            toggleButton.classList.toggle("on", isOn);
+        });
+    </script>
+</body>
+
+</html>
