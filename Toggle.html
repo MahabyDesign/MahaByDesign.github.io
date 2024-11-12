@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: midnightblue;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px; /* Padding to keep button away from edges */
+            transition: background-color 0.3s ease;
+        }
+
+        section {
+            height: 50vh;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: background-image 0.3s ease;
+        }
+
+        /* Styling the toggle button */
+        #toggleButton {
+            width: 100px;
+            height: 40px;
+            background-color: black;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Toggle button inner circle */
+        #toggleButton::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            transition: left 0.3s ease;
+        }
+
+        /* Move circle to right when "On" */
+        #toggleButton.on::before {
+            left: 65px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggleButton"></button>
+    <section></section>
+
+    <script>
+        const pic = document.querySelector('section');
+        const toggleButton = document.getElementById("toggleButton");
+
+        // Images to toggle between
+        const images = ['url("images/Gen_Logo/Logo_Optionv3.2-blue.png")', 'url("images/Gen_Logo/Logo_Optionv3.1-yellow.png")'];
+
+        // Toggle background color, image, and button appearance
+        let isOn = false;
+        toggleButton.addEventListener("click", function () {
+            isOn = !isOn;
+            document.body.style.backgroundColor = isOn ? "orange" : "midnightblue";
+            toggleButton.classList.toggle("on", isOn);
+            pic.style.backgroundImage = isOn ? images[0] : images[1];
+        });
+    </script>
+</body>
+
+</html>
