@@ -3,7 +3,7 @@ body {
     background-color: black;
     font-family: sans-serif;
     font-size: 14px;
-    color: teal;
+    color: lime;
     letter-spacing: -1px;
     max-width: 650px;
     margin: 0 auto;
@@ -17,12 +17,12 @@ body {
 }
 
 .mono {
-    font-family: sans-serif;
+    font-family: 'Courier New', Courier, monospace
 }
 
 /* Hyperlink styling */
 a, a:visited {
-    color: teal; /* Start with teal (matching the body color) */
+    color: lime; /* Start with teal (matching the body color) */
     text-decoration: none; /* remove underline */
 }
 
@@ -30,12 +30,12 @@ a, a:visited {
 @media (max-width: 1024px) {
     body {
         font-size: 13px;
-        color: turquoise;
+        color: blue;
     }
 
     /* Change link color to match text at this size */
     a, a:visited {
-        color: turquoise;
+        color: blue;
     }
 }
 
@@ -43,12 +43,12 @@ a, a:visited {
 @media (max-width: 768px) {
     body {
         font-size: 12px;
-        color: turquoise;
+        color: blue;
     }
 
     /* Change link color to match text at this size */
     a, a:visited {
-        color: turquoise;
+        color: blue;
     }
 }
 
@@ -56,12 +56,12 @@ a, a:visited {
 @media (max-width: 480px) {
     body {
         font-size: 11px;
-        color: turquoise;
+        color: blue;
     }
 
     /* Change link color to match text at this size */
     a, a:visited {
-        color: turquoise;
+        color: blue;
     }
 }
 
@@ -69,12 +69,12 @@ a, a:visited {
 @media (max-width: 320px) {
     body {
         font-size: 10px;
-        color: turquoise;
+        color: blue;
     }
 
     /* Change link color to match text at this size */
     a, a:visited {
-        color: turquoise;
+        color: blue;
     }
 }
 
@@ -82,11 +82,11 @@ a, a:visited {
 @media (max-width: 1024px) and (max-width: 768px) {
     body {
         font-size: 12px;
-        color: pink;
+        color: rgb(201, 5, 37);
     }
 
     /* Match link color to pink text */
     a, a:visited {
-        color: pink;
+        color: rgb(201, 5, 37);
     }
 }

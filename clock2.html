@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Numbers Clock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .falling-numbers {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #clock {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 15rem; /* 15 times the default size of falling numbers */
+            animation: scrollDown 5s linear infinite;
+        }
+
+        @keyframes scrollDown {
+            from {
+                transform: translateY(-150%);
+            }
+            to {
+                transform: translateY(300%);
+            }
+        }
+
+        .random-numbers {
+            position: absolute;
+            color: lime;
+            font-size: 1rem;
+            animation: fall linear infinite;
+            user-select: none;
+        }
+
+        @keyframes fall {
+            from {
+                top: -10%;
+            }
+            to {
+                top: 110%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="falling-numbers">
+        <div id="clock"></div>
+    </div>
+    <script>
+        const clockElement = document.getElementById("clock");
+        const fallingNumbersContainer = document.querySelector(".falling-numbers");
+
+        // Function to update the clock color based on time
+        function updateClockColor(hours) {
+            if (hours >= 4 && hours < 12) {
+                clockElement.style.color = "yellow"; // Morning
+            } else if (hours >= 12 && hours < 17) {
+                clockElement.style.color = "limegreen"; // Afternoon
+            } else {
+                clockElement.style.color = "blue"; // Evening & Night
+            }
+        }
+
+        // Update clock with New York time
+        function updateClock() {
+            const now = new Date();
+            const nyTime = new Date(
+                now.toLocaleString("en-US", { timeZone: "America/New_York" })
+            );
+            const hours = nyTime.getHours();
+            const minutes = String(nyTime.getMinutes()).padStart(2, "0");
+            const seconds = String(nyTime.getSeconds()).padStart(2, "0");
+
+            clockElement.textContent = `${String(hours).padStart(2, "0")}:${minutes}:${seconds}`;
+            updateClockColor(hours);
+        }
+
+        // Generate falling random numbers
+        function generateFallingNumbers() {
+            const numColumns = Math.floor(window.innerWidth / 20);
+            const numRows = Math.floor(window.innerHeight / 20);
+
+            for (let i = 0; i < numColumns; i++) {
+                for (let j = 0; j < numRows; j++) {
+                    const span = document.createElement("span");
+                    span.classList.add("random-numbers");
+                    span.textContent = Math.floor(Math.random() * 10);
+                    span.style.left = `${i * 20}px`;
+                    span.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                    span.style.animationDelay = `${Math.random() * 5}s`;
+                    fallingNumbersContainer.appendChild(span);
+                }
+            }
+        }
+
+        // Initialize
+        updateClock();
+        generateFallingNumbers();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
