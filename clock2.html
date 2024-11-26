@@ -1,116 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falling Numbers Clock</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            overflow: hidden;
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New York Time Clock</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+      color: rgb(11, 15, 140);
+    }
 
-        .falling-numbers {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+    .clock-container {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-        #clock {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            font-size: 15rem; /* 15 times the default size of falling numbers */
-            animation: scrollDown 5s linear infinite;
-        }
+    .time-display {
+      position: absolute;
+      top: 10px;
+      font-size: 2rem;
+      font-family: Arial, sans-serif;
+    }
 
-        @keyframes scrollDown {
-            from {
-                transform: translateY(-150%);
-            }
-            to {
-                transform: translateY(300%);
-            }
-        }
+    .ball {
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9); /* Larger and darker drop shadow */
+    }
 
-        .random-numbers {
-            position: absolute;
-            color: lime;
-            font-size: 1rem;
-            animation: fall linear infinite;
-            user-select: none;
-        }
-
-        @keyframes fall {
-            from {
-                top: -10%;
-            }
-            to {
-                top: 110%;
-            }
-        }
-    </style>
-</head>
+    .floor {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background-color: black;
+    }
+  </style>
 <body>
-    <div class="falling-numbers">
-        <div id="clock"></div>
-    </div>
-    <script>
-        const clockElement = document.getElementById("clock");
-        const fallingNumbersContainer = document.querySelector(".falling-numbers");
+  <div class="clock-container">
+    <div class="time-display" id="timeDisplay"></div>
+    <div class="floor" id="floor"></div>
+  </div>
 
-        // Function to update the clock color based on time
-        function updateClockColor(hours) {
-            if (hours >= 4 && hours < 12) {
-                clockElement.style.color = "yellow"; // Morning
-            } else if (hours >= 12 && hours < 17) {
-                clockElement.style.color = "limegreen"; // Afternoon
-            } else {
-                clockElement.style.color = "blue"; // Evening & Night
-            }
-        }
+  <script>
+    const floorHeight = 50; // Height of the floor at the bottom
+    const hoverGap = 10; // Gap between the balls and the floor
 
-        // Update clock with New York time
-        function updateClock() {
-            const now = new Date();
-            const nyTime = new Date(
-                now.toLocaleString("en-US", { timeZone: "America/New_York" })
-            );
-            const hours = nyTime.getHours();
-            const minutes = String(nyTime.getMinutes()).padStart(2, "0");
-            const seconds = String(nyTime.getSeconds()).padStart(2, "0");
+    function createBall(size, color, xPos, fallSpeed, delay, startYOffset) {
+      setTimeout(() => {
+        const ball = document.createElement("div");
+        ball.classList.add("ball");
+        ball.style.width = `${size}px`;
+        ball.style.height = `${size}px`;
+        ball.style.backgroundColor = color;
+        ball.style.left = `${xPos}px`;
+        ball.style.top = `-${startYOffset}px`; // Randomized start position
+        document.body.appendChild(ball);
 
-            clockElement.textContent = `${String(hours).padStart(2, "0")}:${minutes}:${seconds}`;
-            updateClockColor(hours);
-        }
+        let posY = -startYOffset;
+        const finalY = window.innerHeight - size - floorHeight - hoverGap;
 
-        // Generate falling random numbers
-        function generateFallingNumbers() {
-            const numColumns = Math.floor(window.innerWidth / 20);
-            const numRows = Math.floor(window.innerHeight / 20);
+        const fallInterval = setInterval(() => {
+          posY += fallSpeed;
+          if (posY >= finalY) {
+            posY = finalY;
+            clearInterval(fallInterval);
+          }
+          ball.style.top = `${posY}px`;
+        }, 20);
+      }, delay);
+    }
 
-            for (let i = 0; i < numColumns; i++) {
-                for (let j = 0; j < numRows; j++) {
-                    const span = document.createElement("span");
-                    span.classList.add("random-numbers");
-                    span.textContent = Math.floor(Math.random() * 10);
-                    span.style.left = `${i * 20}px`;
-                    span.style.animationDuration = `${Math.random() * 5 + 5}s`;
-                    span.style.animationDelay = `${Math.random() * 5}s`;
-                    fallingNumbersContainer.appendChild(span);
-                }
-            }
-        }
+    function updateClock() {
+      const nyTime = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+      });
+      const currentTime = new Date(nyTime);
+      const hours = currentTime.getHours() % 12 || 12; // Convert to 12-hour format
+      const minutes = currentTime.getMinutes();
 
-        // Initialize
-        updateClock();
-        generateFallingNumbers();
-        setInterval(updateClock, 1000);
-    </script>
+      // Display digital clock
+      const timeDisplay = document.getElementById("timeDisplay");
+      timeDisplay.innerText = `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}`;
+
+      // Clear existing balls
+      document.querySelectorAll(".ball").forEach(ball => ball.remove());
+
+      // Create falling balls for hours (large red balls)
+      for (let i = 0; i < hours; i++) {
+        const size = 120; // Large balls for hours
+        const color = "red";
+        const xPos = Math.random() * (window.innerWidth - size); // Ensure ball falls within window width
+        const fallSpeed = Math.random() * 3 + 1; // Slower, randomized speed between 1 and 4
+        const startYOffset = 0; // Start from the top of the screen
+        createBall(size, color, xPos, fallSpeed, i * 200, startYOffset); // Add slight delay between red balls
+      }
+
+      // Create falling balls for minutes (small blue balls)
+      for (let i = 0; i < minutes; i++) {
+        const size = 40; // Smaller balls for minutes
+        const color = "blue";
+        const xPos = (i / 60) * window.innerWidth; // Position based on seconds within the minute
+        const fallSpeed = (window.innerHeight - size - floorHeight - hoverGap) / 3000; // Takes ~50 seconds to fall
+        const startYOffset = Math.random() * 300; // Randomize starting height
+        createBall(size, color, xPos, fallSpeed, i * 100, startYOffset); // Add slight delay between blue balls
+      }
+    }
+
+    // Update the clock and balls every minute
+    updateClock();
+
+    // Update the clock and ball drops every minute
+    setInterval(updateClock, 60000); // 1 minute in milliseconds
+  </script>
 </body>
 </html>
