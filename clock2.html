@@ -20,19 +20,25 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      pointer-events: none;
     }
 
     .time-display {
       position: absolute;
-      top: 10px;
       font-size: 2rem;
       font-family: Arial, sans-serif;
+      color: white;
+      visibility: hidden; /* Initially hidden */
+      left: 50%;
+      bottom: 25px; /* Adjusted for rectangle's center */
+      transform: translate(-50%, 50%); /* Centering in the purple rectangle */
+      z-index: 2; /* Ensure it is on top of the floor */
     }
 
     .ball {
       position: absolute;
       border-radius: 50%;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9); /* Larger and darker drop shadow */
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9);
     }
 
     .floor {
@@ -40,9 +46,11 @@
       bottom: 0;
       width: 100%;
       height: 50px;
-      background-color: black;
+      background-color: purple;
+      z-index: 1;
     }
   </style>
+</head>
 <body>
   <div class="clock-container">
     <div class="time-display" id="timeDisplay"></div>
@@ -50,8 +58,25 @@
   </div>
 
   <script>
-    const floorHeight = 50; // Height of the floor at the bottom
-    const hoverGap = 10; // Gap between the balls and the floor
+    const floor = document.getElementById("floor");
+    const timeDisplay = document.getElementById("timeDisplay");
+    let clockVisible = false;
+
+    function getBallColorBasedOnTime() {
+      const nyTime = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+      });
+      const currentTime = new Date(nyTime);
+      const hours = currentTime.getHours();
+
+      if (hours >= 6 && hours < 12) {
+        return "yellow"; // Morning
+      } else if (hours >= 12 && hours < 18) {
+        return "orange"; // Afternoon
+      } else {
+        return "blue"; // Evening and Night
+      }
+    }
 
     function createBall(size, color, xPos, fallSpeed, delay, startYOffset) {
       setTimeout(() => {
@@ -61,21 +86,34 @@
         ball.style.height = `${size}px`;
         ball.style.backgroundColor = color;
         ball.style.left = `${xPos}px`;
-        ball.style.top = `-${startYOffset}px`; // Randomized start position
+        ball.style.top = `-${startYOffset}px`;
         document.body.appendChild(ball);
 
         let posY = -startYOffset;
-        const finalY = window.innerHeight - size - floorHeight - hoverGap;
+        const finalY = window.innerHeight - size - 50;
 
         const fallInterval = setInterval(() => {
           posY += fallSpeed;
           if (posY >= finalY) {
             posY = finalY;
             clearInterval(fallInterval);
+
+            if (color === "red" && !clockVisible) {
+              makeClockVisible();
+            }
           }
           ball.style.top = `${posY}px`;
         }, 20);
       }, delay);
+    }
+
+    function makeClockVisible() {
+      clockVisible = true;
+      timeDisplay.style.visibility = "visible"; // Make the clock visible
+    }
+
+    function updateClockColor(color) {
+      timeDisplay.style.color = color; // Change the clock color dynamically
     }
 
     function updateClock() {
@@ -83,11 +121,10 @@
         timeZone: "America/New_York",
       });
       const currentTime = new Date(nyTime);
-      const hours = currentTime.getHours() % 12 || 12; // Convert to 12-hour format
-      const minutes = currentTime.getMinutes();
+      let hours = currentTime.getHours();
+      let minutes = currentTime.getMinutes();
 
       // Display digital clock
-      const timeDisplay = document.getElementById("timeDisplay");
       timeDisplay.innerText = `${hours.toString().padStart(2, "0")}:${minutes
         .toString()
         .padStart(2, "0")}`;
@@ -97,29 +134,28 @@
 
       // Create falling balls for hours (large red balls)
       for (let i = 0; i < hours; i++) {
-        const size = 120; // Large balls for hours
+        const size = 120;
         const color = "red";
-        const xPos = Math.random() * (window.innerWidth - size); // Ensure ball falls within window width
-        const fallSpeed = Math.random() * 3 + 1; // Slower, randomized speed between 1 and 4
-        const startYOffset = 0; // Start from the top of the screen
-        createBall(size, color, xPos, fallSpeed, i * 200, startYOffset); // Add slight delay between red balls
+        const xPos = Math.random() * (window.innerWidth - size);
+        const fallSpeed = Math.random() * 3 + 1;
+        const startYOffset = 0;
+        createBall(size, color, xPos, fallSpeed, i * 200, startYOffset);
       }
 
-      // Create falling balls for minutes (small blue balls)
+      // Create falling balls for minutes (small balls with dynamic color)
+      const minuteBallColor = getBallColorBasedOnTime();
+      updateClockColor(minuteBallColor); // Update the clock color to match minute ball color
       for (let i = 0; i < minutes; i++) {
-        const size = 40; // Smaller balls for minutes
-        const color = "blue";
-        const xPos = (i / 60) * window.innerWidth; // Position based on seconds within the minute
-        const fallSpeed = (window.innerHeight - size - floorHeight - hoverGap) / 3000; // Takes ~50 seconds to fall
-        const startYOffset = Math.random() * 300; // Randomize starting height
-        createBall(size, color, xPos, fallSpeed, i * 100, startYOffset); // Add slight delay between blue balls
+        const size = 40;
+        const xPos = (i / 60) * window.innerWidth;
+        const fallSpeed = (window.innerHeight - size - 50) / 3000;
+        const startYOffset = Math.random() * 300;
+        createBall(size, minuteBallColor, xPos, fallSpeed, i * 100, startYOffset);
       }
     }
 
     // Update the clock and balls every minute
     updateClock();
-
-    // Update the clock and ball drops every minute
     setInterval(updateClock, 60000); // 1 minute in milliseconds
   </script>
 </body>

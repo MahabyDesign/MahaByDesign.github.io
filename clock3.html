@@ -8,10 +8,11 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: black; /* Default background color */
             overflow: hidden;
             color: white;
             font-family: 'Courier New', Courier, monospace;
+            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for color changes */
         }
 
         .falling-numbers {
@@ -62,7 +63,6 @@
     </div>
     <script>
         const clockElement = document.getElementById("clock");
-        const fallingNumbersContainer = document.querySelector(".falling-numbers");
 
         // Function to update the clock color based on time
         function updateClockColor(hours) {
@@ -75,7 +75,18 @@
             }
         }
 
-        // Update clock with New York time
+        // Function to update background color based on time
+        function updateBackgroundColor(hours) {
+            if (hours >= 6 && hours < 18) {
+                document.body.style.backgroundColor = "white"; // Daytime
+                document.body.style.color = "black"; // Text color for better contrast
+            } else {
+                document.body.style.backgroundColor = "black"; // Nighttime
+                document.body.style.color = "white"; // Text color for better contrast
+            }
+        }
+
+        // Update clock and background with New York time
         function updateClock() {
             const now = new Date();
             const nyTime = new Date(
@@ -87,10 +98,12 @@
 
             clockElement.textContent = `${String(hours).padStart(2, "0")}:${minutes}:${seconds}`;
             updateClockColor(hours);
+            updateBackgroundColor(hours);
         }
 
         // Generate falling random numbers
         function generateFallingNumbers() {
+            const fallingNumbersContainer = document.querySelector(".falling-numbers");
             const numColumns = Math.floor(window.innerWidth / 20);
             const numRows = Math.floor(window.innerHeight / 20);
 

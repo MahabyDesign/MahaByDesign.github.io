@@ -1,0 +1,43 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  canvas {
+    left: 100px;
+  }
+  
+  .check-boxes{
+    display: inline;
+    border: 10px;
+    accent-color: LightGray;
+  }
+  
+  #box1, #box2{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    border:10px;
+    
+  }
+  .mySliders{
+    -webkit-appearance: none;
+    width: 80px;
+    height: 12px;
+    background: black;
+    outline: white 1px solid;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px; 
+  }
+  
+  .mySliders::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 12px;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px; 
+  }
