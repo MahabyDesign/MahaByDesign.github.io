@@ -27,7 +27,7 @@
             text-align: center;
             font-size: 12rem; /* Reduced size by 20% */
             transform: translateY(-150%);
-            animation: slideInFast 5s ease-out, scrollDown 15s linear infinite; /* Faster slide-in */
+            animation: slideInFast 5s ease-out, scrollDown 15s linear infinite;
         }
 
         @keyframes slideInFast {
@@ -44,7 +44,7 @@
                 transform: translateY(0%);
             }
             to {
-                transform: translateY(300%);
+                transform: translateY(100vh); /* Ensures it falls all the way to the bottom */
             }
         }
 
@@ -83,13 +83,15 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             #clock {
-                font-size: 6.4rem !important; /* Reduced proportionally for tablets */
+                font-size: 6.4rem; /* Reduced proportionally for tablets */
+                animation: slideInFast 5s ease-out, scrollDown 15s linear infinite;
             }
         }
 
         @media (max-width: 480px) {
             #clock {
-                font-size: 4rem !important; /* Reduced proportionally for mobile phones */
+                font-size: 4rem; /* Reduced proportionally for mobile phones */
+                animation: slideInFast 5s ease-out, scrollDown 15s linear infinite;
             }
         }
     </style>
@@ -108,13 +110,15 @@
 
         // Function to update the clock color based on time
         function updateClockColor(hours) {
+            let color;
             if (hours >= 4 && hours < 12) {
-                clockElement.style.color = "yellow"; // Morning
+                color = "yellow"; // Morning
             } else if (hours >= 12 && hours < 17) {
-                clockElement.style.color = "limegreen"; // Afternoon
+                color = "limegreen"; // Afternoon
             } else {
-                clockElement.style.color = "blue"; // Evening & Night
+                color = "blue"; // Evening & Night
             }
+            clockElement.style.color = color;
         }
 
         // Update clock and background with New York time
