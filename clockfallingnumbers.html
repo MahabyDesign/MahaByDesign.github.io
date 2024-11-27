@@ -25,13 +25,23 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            font-size: 15rem; /* Default font size for large screens */
-            animation: scrollDown 5s linear infinite;
+            font-size: 12rem; /* Reduced size by 20% */
+            transform: translateY(-150%);
+            animation: slideInFast 5s ease-out, scrollDown 15s linear infinite; /* Faster slide-in */
+        }
+
+        @keyframes slideInFast {
+            from {
+                transform: translateY(-150%);
+            }
+            to {
+                transform: translateY(0%);
+            }
         }
 
         @keyframes scrollDown {
             from {
-                transform: translateY(-150%);
+                transform: translateY(0%);
             }
             to {
                 transform: translateY(300%);
@@ -70,16 +80,16 @@
             cursor: pointer;
         }
 
-        /* Ensure responsive font size adjustments */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             #clock {
-                font-size: 8rem !important; /* Adjust font size for tablets */
+                font-size: 6.4rem !important; /* Reduced proportionally for tablets */
             }
         }
 
         @media (max-width: 480px) {
             #clock {
-                font-size: 5rem !important; /* Adjust font size for mobile phones */
+                font-size: 4rem !important; /* Reduced proportionally for mobile phones */
             }
         }
     </style>
@@ -149,7 +159,7 @@
         // Initialize
         updateClock();
         generateFallingNumbers();
-        setInterval(updateClock, 1000);
+        setInterval(updateClock, 1000); // Update clock every second
     </script>
 </body>
 </html>
