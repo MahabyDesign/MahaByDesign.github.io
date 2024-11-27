@@ -10,7 +10,6 @@
             padding: 0;
             background-color: black; /* Default background color */
             overflow: hidden;
-            color: white;
             font-family: 'Courier New', Courier, monospace;
             transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for color changes */
         }
@@ -55,14 +54,34 @@
                 top: 110%;
             }
         }
+
+        #colorSlider {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1in;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 5px;
+            background: gray;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="falling-numbers">
         <div id="clock"></div>
     </div>
+    <input type="range" id="colorSlider" min="0" max="5" step="1">
     <script>
         const clockElement = document.getElementById("clock");
+        const colorSlider = document.getElementById("colorSlider");
+
+        // Array of background colors
+        const colors = ["white", "yellow", "orange", "lightblue", "darkblue", "black"];
 
         // Function to update the clock color based on time
         function updateClockColor(hours) {
@@ -72,17 +91,6 @@
                 clockElement.style.color = "limegreen"; // Afternoon
             } else {
                 clockElement.style.color = "blue"; // Evening & Night
-            }
-        }
-
-        // Function to update background color based on time
-        function updateBackgroundColor(hours) {
-            if (hours >= 6 && hours < 18) {
-                document.body.style.backgroundColor = "white"; // Daytime
-                document.body.style.color = "black"; // Text color for better contrast
-            } else {
-                document.body.style.backgroundColor = "black"; // Nighttime
-                document.body.style.color = "white"; // Text color for better contrast
             }
         }
 
@@ -98,8 +106,13 @@
 
             clockElement.textContent = `${String(hours).padStart(2, "0")}:${minutes}:${seconds}`;
             updateClockColor(hours);
-            updateBackgroundColor(hours);
         }
+
+        // Change background color based on slider value
+        colorSlider.addEventListener("input", (event) => {
+            const value = event.target.value;
+            document.body.style.backgroundColor = colors[value];
+        });
 
         // Generate falling random numbers
         function generateFallingNumbers() {
