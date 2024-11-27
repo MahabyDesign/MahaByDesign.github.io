@@ -25,7 +25,7 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            font-size: 15rem; /* Default font size */
+            font-size: 15rem; /* Default font size for large screens */
             animation: scrollDown 5s linear infinite;
         }
 
@@ -70,16 +70,16 @@
             cursor: pointer;
         }
 
-        /* Responsive adjustments */
+        /* Ensure responsive font size adjustments */
         @media (max-width: 768px) {
             #clock {
-                font-size: 8rem; /* Adjust font size for tablets */
+                font-size: 8rem !important; /* Adjust font size for tablets */
             }
         }
 
         @media (max-width: 480px) {
             #clock {
-                font-size: 5rem; /* Adjust font size for mobile phones */
+                font-size: 5rem !important; /* Adjust font size for mobile phones */
             }
         }
     </style>
