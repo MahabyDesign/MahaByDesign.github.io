@@ -11,50 +11,201 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- Link to external CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto Mono', monospace;
+            background-color: black;
+            color: lime;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            background-color: black;
+            color: lime;
+            text-align: left; /* Text justified to the left */
+            padding: 20px 10px; /* Adjust padding for better alignment */
+            border-bottom: 1px solid lime;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .header .instagram-icon {
+            position: absolute;
+            right: 10px; /* Flush to the right */
+            top: 50%; /* Vertically centered */
+            transform: translateY(-50%);
+        }
+
+        .header .instagram-icon img {
+            width: 25px;
+            height: 25px;
+            padding-left: 10px; /* Add padding to the left */
+            padding-right: 10px; /* Add padding to the right */
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            margin-top: 100px; /* Prevent overlap with the fixed header */
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid lime;
+            display: inline-block;
+            max-width: 0;
+            animation: typing 6s steps(60, end) forwards, blink 0.5s step-end 6s;
+        }
+
+        @keyframes typing {
+            from {
+                max-width: 0;
+            }
+            to {
+                max-width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: lime;
+            }
+        }
+
+        .mono h2 {
+            transition: letter-spacing 0.3s ease-in-out;
+        }
+
+        .hover-effect {
+            transition: letter-spacing 0.3s ease-in-out;
+        }
+
+        .hover-effect:hover {
+            letter-spacing: 4px; /* Fun tracking effect on hover */
+        }
+
+        .clock {
+            width: 100%;
+            background-color: black;
+            color: lime;
+            position: fixed;
+            bottom: 50px;
+            left: 0;
+            height: 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .time {
+            font-size: 16px;
+            white-space: nowrap;
+            animation: scrollLeftToRight 10s linear infinite;
+        }
+
+        @keyframes scrollLeftToRight {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="center">
-        <h1 class="mono">My Class Website</h1>
+    <!-- Header -->
+    <div class="header">
+        My Class Website
+        <a href="https://www.instagram.com/mahabydesign" target="_blank" class="instagram-icon">
+            <img src="images/instagram-white-icon.png" alt="Instagram Link">
+        </a>
     </div>
-    <h2 class="mono">Exercises</h2>
-    <ul class="mono">
-        <li>Exercise 1 (Part 1)</li> 
-        <details>
-            <summary>Vegan Chocolate Chip Cookie</summary>
-            A fast and easy chewy delicious chocolate chip cookie <a href="Recipe 1.html" target="_blank">recipe</a> 
-        </details>
-        </li>
-        <li>Exercise 1 (Part 2)</li> 
-        <details>
-            <summary>Pineapple and Apricot Punch</summary>
-            A refreshing summer punch <a href="Recipe 2.html" target="_blank">recipe</a>
-        </details>
-        </li>
-    </ul>
 
-    <h2 class="mono">Projects</h2>
-    <ul class="mono">
-        <li><a href="pg1.html" target="_blank">TEN PAGES</a></li>
-        <li><a href="responsive_circle.html" target="_blank">Responsive Circle </a></li>
-        <li><a href="typeface.html" target="_blank">Typeface </a></li>
-        <li><a href="1-intro-to-js-starter.htm" target="_blank">Javascript Work</a></li>
-        <li><a href="gen_logo.html" target="_blank">Generative Logo</a></li>
-        <li><a href="Toggle.html" target="_blank">Toggle</a></li>
-        <li><a href="clocksfallingballs.html" target="_blank">Clock Falling Balls</a></li>
-        <li><a href="clockfallingtime.html" target="_blank">Clock Falling Time</a></li>
-    </ul>
-   <!-- Cursor effects library -->
-   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <div class="container">
+        <!-- Main Content -->
+        <div class="content">
+            <p class="intro-text" id="intro-text">
+                Hi, my name is Maha Alameeri, welcome to my class website! 
+            </p>
+            <h2 class="mono">Exercises</h2>
+            <ul class="mono">
+                <li>Exercise 1 (Part 1)</li>
+                <details class="hover-effect">
+                    <summary>Vegan Chocolate Chip Cookie</summary>
+                    A fast and easy chewy delicious chocolate chip cookie <a href="Recipe 1.html" target="_blank">recipe</a>
+                </details>
+                <li>Exercise 1 (Part 2)</li>
+                <details class="hover-effect">
+                    <summary>Pineapple and Apricot Punch</summary>
+                    A refreshing summer punch <a href="Recipe 2.html" target="_blank">recipe</a>
+                </details>
+            </ul>
 
-   <!-- Mouse effect initialization -->
-   <script>
-       window.addEventListener("load", (event) => {
-           new cursoreffects.fairyDustCursor({
-               colors: ["#ff0000", "#00ff00", "#0000ff"],
-           });
-       });
-   </script>
-</body> 
+            <h2 class="mono">Projects</h2>
+            <ul class="mono">
+                <li><a href="pg1.html" target="_blank" class="hover-effect">TEN PAGES</a></li>
+                <li><a href="responsive_circle.html" target="_blank" class="hover-effect">Responsive Circle</a></li>
+                <li><a href="typeface.html" target="_blank" class="hover-effect">Typeface</a></li>
+                <li><a href="1-intro-to-js-starter.htm" target="_blank" class="hover-effect">Javascript Work</a></li>
+                <li><a href="gen_logo.html" target="_blank" class="hover-effect">Generative Logo</a></li>
+                <li><a href="Toggle.html" target="_blank" class="hover-effect">Toggle</a></li>
+                <li><a href="clocksfallingballs.html" target="_blank" class="hover-effect">Clock Falling Balls</a></li>
+                <li><a href="clockfallingtime.html" target="_blank" class="hover-effect">Clock Falling Time</a></li>
+            </ul>
+        </div>
+
+        <!-- Clock Div -->
+        <div class="clock">
+            <div class="time" id="time-display">00:00:00</div>
+        </div>
+    </div>
+
+    <!-- Cursor effects library -->
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+
+    <!-- Mouse effect initialization -->
+    <script>
+        window.addEventListener("load", (event) => {
+            new cursoreffects.fairyDustCursor({
+                colors: ["#ff0000", "#00ff00", "#0000ff"],
+            });
+        });
+
+        // Military Clock Script
+        const timeDisplay = document.getElementById("time-display");
+
+        function updateClock() {
+            const now = new Date();
+            timeDisplay.textContent = now.toLocaleTimeString('en-GB', { hour12: false });
+        }
+
+        // Update clock every second
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
 </html>
